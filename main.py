@@ -19,40 +19,6 @@ def setup():
   known_hsv_map["808080"] = 'Grey'
   known_hsv_map["008000"] = 'Green'
 
-def hex_char_to_int(chr: str):
-  if chr.isdigit():
-    return int(chr)
-  elif chr.isalpha():
-    if chr.upper().startswith('A', 0, 0):
-      return 10
-    if chr.upper().startswith('B', 0, 0):
-      return 11
-    if chr.upper().startswith('C', 0, 0):
-      return 12
-    if chr.upper().startswith('D', 0, 0):
-      return 13
-    if chr.upper().startswith('E', 0, 0):
-      return 14
-    if chr.upper().startswith('F', 0, 0):
-      return 15
-  else:
-    return 0
-
-def hex_str_to_rgb(hex: str):
-  r = 0
-  g = 0
-  b = 0
-  for idx, digit in enumerate(hex):
-    if idx >= 0 and idx < 2:
-      r += hex_char_to_int(digit) if idx % 2 != 0 else hex_char_to_int(digit) * 16
-    elif idx >= 2 and idx < 4:
-      g += hex_char_to_int(digit) if idx % 2 != 0 else hex_char_to_int(digit) * 16
-    elif idx >= 4 and idx < 6:
-      b += hex_char_to_int(digit) if idx % 2 != 0 else hex_char_to_int(digit) * 16
-    else:
-      break
-  return r, g, b
-
 def color(color):
   if color in known_hsv_map:
     return known_hsv_map[color]
@@ -68,6 +34,7 @@ def color(color):
       if value < known_map[mn]:
         mn = idx
     return known_hsv_map[keys[mn]]
+
 def home():
   return "CareerPrepSolutionsAndTests: Programming problems and unit testing for these given problems in python[mainly] (test \'/color/hex_value\' to get back the closest color)"
 
